@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
         }),
       ),
       routes: {
-        //'/': (context) => const FirebaseStream(),
         '/home': (context) => const HomePage(),
         '/login': (context) => const LoginPage(),
       },
