@@ -68,7 +68,6 @@ class _MovieDetailState extends State<MovieDetail> {
   void initState() {
     super.initState();
     getImageUrls();
-    //_image = widget.cardItem.images;
     if (mounted) {
       isMovieInFavorites(widget.movieItem.id).then((inFavorites) {
         setState(() {
@@ -123,49 +122,10 @@ class _MovieDetailState extends State<MovieDetail> {
             },
           ),
         ],
-        /*actions: [
-          IconButton(
-            icon: Icon(
-              isFavorited ? Icons.favorite : Icons.favorite_outline,
-              color: isFavorited ? Colors.pink[400] : null,
-            ),
-            onPressed: () {
-              setState(() {
-                isFavorited = !isFavorited;
-                String userId = FirebaseAuth.instance.currentUser!.uid;
-                if (isFavorited) {
-                  //addToFavorites(userId, widget.cardItem.id);
-                } else {
-                  //removeFromFavorites(userId, widget.cardItem.id);
-                }
-              });
-            },
-          ),
-        ],*/
       ),
       body:  Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          /*CarouselSlider(
-            options: CarouselOptions(
-                height: 200.0,
-                enlargeCenterPage: true,
-                onPageChanged: (index, _) {
-                  setState(() {
-                    _currentSlide = index;
-                  });
-                }),
-            items: _image.map((image) {
-              return Builder(
-                builder: (context) {
-                  return Image.network(
-                    image,
-                    fit: BoxFit.cover,
-                  );
-                },
-              );
-            }).toList(),
-          ),*/
           CarouselSlider(
             options: CarouselOptions(height: 250.0),
             items: imageUrls.map((url) {
@@ -207,32 +167,6 @@ class _MovieDetailState extends State<MovieDetail> {
 
               child: isFavorited ? const Text("Remove from favorites", style: TextStyle(fontSize: 22)) : const Text("Add to favorites", style: TextStyle(fontSize: 22))
           ),
-
-          /*Row(
-            children: [
-              Expanded(
-                  child: Container(
-                height: 60,
-                child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        isFavorited = !isFavorited;
-                        String userId = FirebaseAuth.instance.currentUser!.uid;
-                        if (isFavorited) {
-                          addToFavorites(userId, widget.cardItem.id);
-                        } else {
-                          removeFromFavorites(userId, widget.cardItem.id);
-                        }
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(primary: Colors.grey),
-                    child: const Text(
-                      'Добавить в избранное',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    )),
-              ))
-            ],
-          )*/
         ],
       ),
 
